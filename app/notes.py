@@ -20,9 +20,11 @@ def get_notes(
     '''
     try:
         skip = (page - 1) * limit
-        notes = db.query(entities=models.Note).filter(models.Note.title.contains(other=search)).limit(limit=limit).offset(offset=skip).all()
+        notes = db.query(models.Note).filter(models.Note.title.contains(other=search)).limit(limit=limit).offset(offset=skip).all()
+        print(notes)
         return { 'status':'success', 'results': len(notes), 'notes': notes}
-    except:
+    except Exception as e:
+        print(e)
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Sorry ,I can not give you notes!")
     
 # [note] create a new note.
@@ -37,11 +39,12 @@ def create_note(
     '''
     try:
         new_note = models.Note(**payload.dict())
-        db.add(instance=new_note)
+        db.add(new_note)
         db.commit()
         db.refresh(instance=new_note)
         return { 'status':'success',  'note': new_note}
-    except:
+    except Exception as e:
+        print(e)
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Sorry ,I can not create note!")
 
 # [note] update an existing note.
@@ -51,7 +54,7 @@ def update_note(noteId: str,
                 db: Session = Depends(dependency=get_db)
                 ):
     # prepare and execute query to execute towards database
-    note_query = db.query(entities=models.Note).filter(models.Note.id == noteId)
+    note_query = db.query(models.Note).filter(models.Note.id == noteId)
     # get first element from above result
     db_note = note_query.first()
 
@@ -83,12 +86,13 @@ def get_note(
     '''
     try:
         # check in the db is such note id exists.        
-        note = db.query(entities=models.Note).filter(models.Note.id ==  noteId).first()        
+        note = db.query(models.Note).filter(models.Note.id ==  noteId).first()        
         if not note:
             # as note does not exists in database raising 404. 
             raise HTTPException(status.HTTP_404_NOT_FOUND,detail="No note with this id: {noteId} found")
         return { 'status':'success', 'note': note}
-    except:
+    except Exception as e:
+        print(e)
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Sorry ,I can not give you this note!")
     
 
@@ -104,7 +108,7 @@ def delete_note(
     '''
     try:
         # check in the db is such note id exists.
-        note_query = db.query(entities=models.Note).filter(models.Note.id ==  noteId)      
+        note_query = db.query(models.Note).filter(models.Note.id ==  noteId)      
         note = note_query.first()        
         if not note:
             # as note does not exists in raising 404. 
