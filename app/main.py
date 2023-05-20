@@ -8,4 +8,12 @@ Entry point for Notes Application
 __author__ = "Sunil S S"
 __date__ = "2023/05/20"
 
-print("This works!!")
+from fastapi import FastAPI
+
+# Initialize the app.
+app = FastAPI()
+
+# GET Methoed for healh checking.
+@app.get("/api/healthchecker")
+def health_checked():
+    return {"message":"All set now!!"}
