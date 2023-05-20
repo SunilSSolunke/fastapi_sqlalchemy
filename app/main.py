@@ -15,5 +15,10 @@ app = FastAPI()
 
 # GET Methoed for healh checking.
 @app.get("/api/healthchecker")
-def health_checked():
+def health_checker():
+    '''
+    # health_checker function.
+    This is a dummy healthchecker. 
+    '''
+
     return {"message":"All set now!!"}
