@@ -30,15 +30,17 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(notes.router, tags=['Notes'], prefix='/api/notes')
+app.include_router(notes.router, tags=["Notes"], prefix="/api/notes")
+
 
 # GET Methoed for healh checking.
 @app.get("/api/healthchecker")
 def health_checker():
-    '''
+    """
     # health_checker function.
-    This is a dummy healthchecker. 
-    '''
-    logger.info('Started healthchecker!!!')
-    
-    return {"message":"All set now!!"}
+    This is a dummy healthchecker.
+    """
+
+    logger.log_text(text="Started healthchecker!!!")
+
+    return {"message": "All set now!!"}
