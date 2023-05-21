@@ -41,6 +41,6 @@ def health_checker():
     This is a dummy healthchecker.
     """
 
-    logger.log_text(text="Started healthchecker!!!")
-
+    logger.debug("Started healthchecker!!!")
+    
     return {"message": "All set now!!"}
