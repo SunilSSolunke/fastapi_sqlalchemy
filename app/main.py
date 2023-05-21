@@ -8,10 +8,12 @@ Entry point for Notes Application
 __author__ = "Sunil S S"
 __date__ = "2023/05/20"
 
+from .app_logging import logger
 from fastapi import FastAPI
 from app import models, notes
 from fastapi.middleware.cors import CORSMiddleware
 from .database import engine
+
 
 # Create tables/object strcuture as defined in the models.add()
 
@@ -37,5 +39,6 @@ def health_checker():
     # health_checker function.
     This is a dummy healthchecker. 
     '''
-
+    logger.info('Started healthchecker!!!')
+    
     return {"message":"All set now!!"}
