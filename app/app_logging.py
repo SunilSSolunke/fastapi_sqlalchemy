@@ -8,6 +8,16 @@ logging_client = google.cloud.logging.Client()
 # you're running in and integrates the handler with the
 # Python logging module. By default this captures all logs
 # at INFO level and higher
+
+""" Level : Numeric value
+CRITICAL : 50
+ERROR : 40
+WARNING :30
+INFO : 20
+DEBUG : 10
+NOTSET : 0 """
+
+
 logging_client.setup_logging(
     log_level=10, excluded_loggers=("sqlalchemy.engine.Engine",)
 )
