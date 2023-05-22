@@ -12,8 +12,7 @@ from .app_logging import logger
 from fastapi import FastAPI
 from app import models, notes
 from fastapi.middleware.cors import CORSMiddleware
-from .database import engine
-
+from .database import engine, get_db
 
 # Create tables/object strcuture as defined in the models.add()
 
@@ -38,9 +37,12 @@ app.include_router(notes.router, tags=["Notes"], prefix="/api/notes")
 def health_checker():
     """
     # health_checker function.
-    This is a dummy healthchecker.
+    This is a healthchecker.
     """
-
-    logger.debug("Started healthchecker!!!")
-    
-    return {"message": "All set now!!"}
+    test_db_connection = get_db()
+    if test_db_connection is None:
+        logger.critical("Unable to connect to database.", stack_info=True, stacklevel=2)
+    # Test GCS Connection also like this one..
+    else:
+        logger.info("All checks are passed now.")
+        return {"message": "All set now!!"}
