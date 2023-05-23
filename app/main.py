@@ -44,5 +44,6 @@ def health_checker():
         logger.critical("Unable to connect to database.", stack_info=True, stacklevel=2)
     # Test GCS Connection also like this one..
     else:
-        logger.info("All checks are passed now.")
+        logger.info("All checks are passed now from INFO Level.")
+        logger.debug("All checks are passed now from DEBUG Level.")
         return {"message": "All set now!!"}
