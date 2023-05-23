@@ -1,50 +1,55 @@
-# import google cloud logging
-import google.cloud.logging
+# importing dotenv for .env file
+import os
+from dotenv import load_dotenv
 
-# Create a Cloud Logging client
-logging_client = google.cloud.logging.Client()
+# take env. variables from .env file
+load_dotenv()
 
-# Retrieves a Cloud Logging handler based on the environment
-# you're running in and integrates the handler with the
-# Python logging module. By default this captures all logs
-# at INFO level and higher
+# Get all declared enviornment variables.
 
-""" Level : Numeric value
-CRITICAL : 50
-ERROR : 40
-WARNING :30
-INFO : 20
-DEBUG : 10
-NOTSET : 0 """
+ENV_CUSTOM_LOGGER_NAME = os.environ.get("CUSTOM_LOGGER_NAME")
+ENV_LOGGING_LEVEL = os.environ.get("LOGGING_LEVEL")
+ENV_LOGS_ON_LOCAL_FILE = int(os.environ.get("LOGS_ON_LOCAL_FILE"))
+ENV_LOCAL_LOG_FILE_NAME = os.environ.get("LOCAL_LOG_FILE_NAME")
+ENV_LOGS_ON_GCP = int(os.environ.get("LOGS_ON_GCP"))
+ENV_EXCLUDE_LOGGERS_ON_GCP = os.environ.get("EXCLUDE_LOGGERS_ON_GCP")
+ENV_LOG_FORMAT = os.environ.get("LOG_FORMAT")
 
+# check log destination for GCP and set config accordingly
 
-logging_client.setup_logging(
-    log_level=10, excluded_loggers=("sqlalchemy.engine.Engine",)
-)
-# [END logging_handler_setup]
+if ENV_LOGS_ON_GCP == 1:
+    print("starting config of logging on GCP now")
+    # import google cloud logging
+    import google.cloud.logging
 
-# Now importing standard logging
+    # Create a Cloud Logging client
+    logging_client = google.cloud.logging.Client()
+
+    # Setting up exclued loggers variable for GCP.
+    ENV_EXCLUDE_LOGGERS_ON_GCP = tuple(ENV_EXCLUDE_LOGGERS_ON_GCP.split(","))
+
+    # Setting up cloud logging now.
+    logging_client.setup_logging(excluded_loggers=ENV_EXCLUDE_LOGGERS_ON_GCP)
+
+# Setting normal python logging now
 import logging
 
+# Create a custom logger.
+logger = logging.getLogger(ENV_CUSTOM_LOGGER_NAME)
 
-# Create a custom logger
-logger = logging.getLogger("notes-service")
+# Set logging level for custom logger.
+logger.setLevel(level=ENV_LOGGING_LEVEL)
 
-# Create handlers
+# console handler and related config
 c_handler = logging.StreamHandler()
-f_handler = logging.FileHandler("file.log")
-logger.setLevel(logging.DEBUG)
-
-# Create formatters and add it to handlers
-c_format = logging.Formatter(
-    "%(asctime)s:%(name)s:%(module)s:%(filename)s:%(funcName)s:%(lineno)d:%(levelname)s:%(message)s"
-)
-f_format = logging.Formatter(
-    "%(asctime)s|%(name)s|%(module)s|%(filename)s|%(funcName)s|%(lineno)d|%(levelname)s|%(message)s"
-)
+c_format = logging.Formatter(ENV_LOG_FORMAT)
 c_handler.setFormatter(c_format)
-f_handler.setFormatter(f_format)
-
-# Add handlers to the logger
 logger.addHandler(c_handler)
-logger.addHandler(f_handler)
+
+# check log destination for Local Run and set config accordingly
+if ENV_LOGS_ON_LOCAL_FILE == 1:
+    print("starting config of logging on local file now")
+    f_handler = logging.FileHandler(ENV_LOCAL_LOG_FILE_NAME)
+    f_format = logging.Formatter(ENV_LOG_FORMAT)
+    f_handler.setFormatter(f_format)
+    logger.addHandler(f_handler)
