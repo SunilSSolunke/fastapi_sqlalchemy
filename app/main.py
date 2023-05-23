@@ -8,10 +8,11 @@ Entry point for Notes Application
 __author__ = "Sunil S S"
 __date__ = "2023/05/20"
 
+from .app_logging import logger
 from fastapi import FastAPI
 from app import models, notes
 from fastapi.middleware.cors import CORSMiddleware
-from .database import engine
+from .database import engine, get_db
 
 # Create tables/object strcuture as defined in the models.add()
 
@@ -28,14 +29,21 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(notes.router, tags=['Notes'], prefix='/api/notes')
+app.include_router(notes.router, tags=["Notes"], prefix="/api/notes")
+
 
 # GET Methoed for healh checking.
 @app.get("/api/healthchecker")
 def health_checker():
-    '''
+    """
     # health_checker function.
-    This is a dummy healthchecker. 
-    '''
-
-    return {"message":"All set now!!"}
+    This is a healthchecker.
+    """
+    test_db_connection = get_db()
+    if test_db_connection is None:
+        logger.critical("Unable to connect to database.", stack_info=True, stacklevel=2)
+    # Test GCS Connection also like this one..
+    else:
+        logger.info("All checks are passed now from INFO Level.")
+        logger.debug("All checks are passed now from DEBUG Level.")
+        return {"message": "All set now!!"}
