@@ -1,3 +1,12 @@
+# -*- coding: utf-8 -*-
+
+""" 
+This is for setting up logging.
+"""
+__author__ = "Sunil S S"
+__date__ = "2023/05/23"
+
+
 # importing dotenv for .env file
 import os
 from dotenv import load_dotenv
