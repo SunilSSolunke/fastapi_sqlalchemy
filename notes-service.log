@@ -1,0 +1,198 @@
+2023-05-23 12:42:32,244:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 12:42:32,245:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 12:42:33,059:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 12:42:33,060:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 12:42:33,785:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 12:42:33,791:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 12:42:34,318:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 12:42:34,319:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 12:42:34,824:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 12:42:34,825:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 12:42:35,361:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 12:42:35,362:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 12:47:04,125:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 12:47:04,126:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 12:47:07,754:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 12:47:07,755:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 12:47:08,747:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 12:47:08,747:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 12:47:09,355:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 12:47:09,355:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 12:47:09,847:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 12:47:09,849:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 12:50:03,862:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 12:50:18,007:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 12:50:18,534:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 12:50:18,975:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 12:50:44,383:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 12:50:44,584:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 12:50:45,162:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 12:50:45,646:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 12:50:46,135:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 12:50:46,576:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 12:53:32,499:notes-service:notes:notes.py:get_note:129:ERROR:(builtins.ValueError) badly formed hexadecimal UUID string
+[SQL: SELECT notes.id AS notes_id, notes.title AS notes_title, notes.content AS notes_content, notes.category AS notes_category, notes.publsihed AS notes_publsihed, notes."createdAt" AS "notes_createdAt", notes."updatedAt" AS "notes_updatedAt" 
+FROM notes 
+WHERE notes.id = ?
+ LIMIT ? OFFSET ?]
+[parameters: [{}]]
+Traceback (most recent call last):
+  File "C:\Users\sssol\workspace\fastapi_sqlalchemy\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1805, in _execute_context
+    context = constructor(
+              ^^^^^^^^^^^^
+  File "C:\Users\sssol\workspace\fastapi_sqlalchemy\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 1077, in _init_compiled
+    param = [
+            ^
+  File "C:\Users\sssol\workspace\fastapi_sqlalchemy\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 1078, in <listcomp>
+    processors[key](compiled_params[key])
+  File "C:\Users\sssol\workspace\fastapi_sqlalchemy\venv\Lib\site-packages\sqlalchemy\sql\type_api.py", line 1667, in process
+    return process_param(value, dialect)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sssol\workspace\fastapi_sqlalchemy\venv\Lib\site-packages\fastapi_utils\guid_type.py", line 50, in process_bind_param
+    return "%.32x" % uuid.UUID(value).int
+                     ^^^^^^^^^^^^^^^^
+  File "C:\Users\sssol\AppData\Local\Programs\Python\Python311\Lib\uuid.py", line 178, in __init__
+    raise ValueError('badly formed hexadecimal UUID string')
+ValueError: badly formed hexadecimal UUID string
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\sssol\workspace\fastapi_sqlalchemy\app\notes.py", line 119, in get_note
+    note = db.query(models.Note).filter(models.Note.id == noteId).first()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sssol\workspace\fastapi_sqlalchemy\venv\Lib\site-packages\sqlalchemy\orm\query.py", line 2824, in first
+    return self.limit(1)._iter().first()
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sssol\workspace\fastapi_sqlalchemy\venv\Lib\site-packages\sqlalchemy\orm\query.py", line 2916, in _iter
+    result = self.session.execute(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sssol\workspace\fastapi_sqlalchemy\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1717, in execute
+    result = conn._execute_20(statement, params or {}, execution_options)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sssol\workspace\fastapi_sqlalchemy\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1710, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sssol\workspace\fastapi_sqlalchemy\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sssol\workspace\fastapi_sqlalchemy\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1577, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sssol\workspace\fastapi_sqlalchemy\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1811, in _execute_context
+    self._handle_dbapi_exception(
+  File "C:\Users\sssol\workspace\fastapi_sqlalchemy\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2129, in _handle_dbapi_exception
+    util.raise_(
+  File "C:\Users\sssol\workspace\fastapi_sqlalchemy\venv\Lib\site-packages\sqlalchemy\util\compat.py", line 211, in raise_
+    raise exception
+  File "C:\Users\sssol\workspace\fastapi_sqlalchemy\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1805, in _execute_context
+    context = constructor(
+              ^^^^^^^^^^^^
+  File "C:\Users\sssol\workspace\fastapi_sqlalchemy\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 1077, in _init_compiled
+    param = [
+            ^
+  File "C:\Users\sssol\workspace\fastapi_sqlalchemy\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 1078, in <listcomp>
+    processors[key](compiled_params[key])
+  File "C:\Users\sssol\workspace\fastapi_sqlalchemy\venv\Lib\site-packages\sqlalchemy\sql\type_api.py", line 1667, in process
+    return process_param(value, dialect)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sssol\workspace\fastapi_sqlalchemy\venv\Lib\site-packages\fastapi_utils\guid_type.py", line 50, in process_bind_param
+    return "%.32x" % uuid.UUID(value).int
+                     ^^^^^^^^^^^^^^^^
+  File "C:\Users\sssol\AppData\Local\Programs\Python\Python311\Lib\uuid.py", line 178, in __init__
+    raise ValueError('badly formed hexadecimal UUID string')
+sqlalchemy.exc.StatementError: (builtins.ValueError) badly formed hexadecimal UUID string
+[SQL: SELECT notes.id AS notes_id, notes.title AS notes_title, notes.content AS notes_content, notes.category AS notes_category, notes.publsihed AS notes_publsihed, notes."createdAt" AS "notes_createdAt", notes."updatedAt" AS "notes_updatedAt" 
+FROM notes 
+WHERE notes.id = ?
+ LIMIT ? OFFSET ?]
+[parameters: [{}]]
+2023-05-23 13:04:33,446:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 13:04:33,446:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 13:36:41,571:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 13:36:41,576:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 13:36:42,300:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 13:36:42,303:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 13:36:42,974:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 13:36:42,975:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 13:36:43,394:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 13:36:43,396:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 13:36:43,834:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 13:36:43,835:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 13:42:33,240:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 13:42:33,241:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 13:42:34,075:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 13:42:34,076:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 13:42:34,584:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 13:42:34,585:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 13:42:34,927:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 13:42:34,928:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 13:42:35,311:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 13:42:35,312:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 13:42:35,870:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 13:42:35,871:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 13:42:36,215:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 13:42:36,216:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 13:42:36,518:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 13:42:36,519:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 13:42:36,813:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 13:42:36,814:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 13:43:44,925:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 13:43:44,926:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 13:43:45,593:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 13:43:45,594:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 13:43:46,195:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 13:43:46,196:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 13:43:46,545:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 13:43:46,545:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 13:43:46,757:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 13:43:46,758:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 13:43:46,952:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 13:43:46,952:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 13:43:47,110:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 13:43:47,110:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 13:43:47,295:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 13:43:47,296:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 13:43:47,616:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 13:43:47,616:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 13:43:47,838:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 13:43:47,839:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 14:49:23,965:notes-service:main:main.py:health_checker:48:INFO:All checks are passed now from INFO Level.
+2023-05-23 14:49:23,966:notes-service:main:main.py:health_checker:49:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 14:49:25,840:notes-service:main:main.py:health_checker:48:INFO:All checks are passed now from INFO Level.
+2023-05-23 14:49:25,842:notes-service:main:main.py:health_checker:49:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 14:49:26,488:notes-service:main:main.py:health_checker:48:INFO:All checks are passed now from INFO Level.
+2023-05-23 14:49:26,489:notes-service:main:main.py:health_checker:49:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 14:49:27,041:notes-service:main:main.py:health_checker:48:INFO:All checks are passed now from INFO Level.
+2023-05-23 14:49:27,041:notes-service:main:main.py:health_checker:49:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 14:49:27,497:notes-service:main:main.py:health_checker:48:INFO:All checks are passed now from INFO Level.
+2023-05-23 14:49:27,498:notes-service:main:main.py:health_checker:49:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 14:49:27,855:notes-service:main:main.py:health_checker:48:INFO:All checks are passed now from INFO Level.
+2023-05-23 14:49:27,856:notes-service:main:main.py:health_checker:49:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 14:49:28,090:notes-service:main:main.py:health_checker:48:INFO:All checks are passed now from INFO Level.
+2023-05-23 14:49:28,091:notes-service:main:main.py:health_checker:49:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 14:49:28,280:notes-service:main:main.py:health_checker:48:INFO:All checks are passed now from INFO Level.
+2023-05-23 14:49:28,280:notes-service:main:main.py:health_checker:49:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 14:49:28,480:notes-service:main:main.py:health_checker:48:INFO:All checks are passed now from INFO Level.
+2023-05-23 14:49:28,481:notes-service:main:main.py:health_checker:49:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 14:49:28,669:notes-service:main:main.py:health_checker:48:INFO:All checks are passed now from INFO Level.
+2023-05-23 14:49:28,669:notes-service:main:main.py:health_checker:49:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 14:49:28,876:notes-service:main:main.py:health_checker:48:INFO:All checks are passed now from INFO Level.
+2023-05-23 14:49:28,877:notes-service:main:main.py:health_checker:49:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 14:49:29,101:notes-service:main:main.py:health_checker:48:INFO:All checks are passed now from INFO Level.
+2023-05-23 14:49:29,101:notes-service:main:main.py:health_checker:49:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 14:49:36,469:notes-service:notes:notes.py:get_notes:41:DEBUG:Total Number of Notes retrived are 0
+2023-05-23 14:49:41,412:notes-service:notes:notes.py:get_notes:41:DEBUG:Total Number of Notes retrived are 0
+2023-05-23 14:49:52,444:notes-service:notes:notes.py:get_notes:41:DEBUG:Total Number of Notes retrived are 0
+2023-05-23 14:49:52,527:notes-service:notes:notes.py:get_notes:41:DEBUG:Total Number of Notes retrived are 0
+2023-05-23 14:49:53,394:notes-service:notes:notes.py:get_notes:41:DEBUG:Total Number of Notes retrived are 0
+2023-05-23 14:49:54,042:notes-service:notes:notes.py:get_notes:41:DEBUG:Total Number of Notes retrived are 0
+2023-05-23 14:49:54,419:notes-service:notes:notes.py:get_notes:41:DEBUG:Total Number of Notes retrived are 0
+2023-05-23 14:50:18,968:notes-service:notes:notes.py:get_notes:41:DEBUG:Total Number of Notes retrived are 0
+2023-05-23 14:52:51,794:notes-service:notes:notes.py:get_notes:41:DEBUG:Total Number of Notes retrived are 0
+2023-05-23 14:53:36,469:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 14:53:36,470:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 14:53:38,026:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 14:53:38,028:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
+2023-05-23 14:53:38,771:notes-service:main:main.py:health_checker:47:INFO:All checks are passed now from INFO Level.
+2023-05-23 14:53:38,772:notes-service:main:main.py:health_checker:48:DEBUG:All checks are passed now from DEBUG Level.
