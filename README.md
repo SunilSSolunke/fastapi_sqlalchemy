@@ -1,5 +1,3 @@
-https://codevoweb.com/build-a-crud-app-with-fastapi-and-sqlalchemy/
-
 run command -> 
 uvicorn app.main:app --host localhost --port 8000 --reload
 
@@ -481,4 +479,7 @@ class ListNoteResponse(BaseModel):
     results: int
     notes : List[NoteBaseSchema]     
 ```
+
+![logging_screenshot](https://github.com/SunilSSolunke/fastapi_sqlalchemy/assets/93458668/9d356f51-ca03-4dde-89fa-990b8ca400a3)
+
 
